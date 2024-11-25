@@ -33,12 +33,14 @@ class Comment(Base):
     comment_text = Column(String(200))
     author_id= Column(Integer, ForeignKey('user.id'))
     post_id= Column(Integer, ForeignKey('post.id'))
+    author= relationship(User)
 
 class Post(Base):
     __tablename__ = 'post'
    
     id = Column(Integer, primary_key=True)
     user_id= Column(Integer, ForeignKey('user.id'))
+    author= relationship(User)
 
 class MediaType(PyEnum):
     REEL = "reel"
